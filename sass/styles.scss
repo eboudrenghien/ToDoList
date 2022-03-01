@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    // mettre le background image
+        color: #5CA006;
+        font-family: 'Indie Flower', cursive;
+        min-height: 100vh;
+}
+header{
+    font-size: 1.5rem;
+}
+
+aside{
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #95b270;
+    background-color: #E5F6E4;
+    border-radius: 10px;
+    width: 50%;
+    h2{
+        padding: 0.5rem;
+        text-align: center;
+    }
+    p{
+        text-align: center;
+        font-size: 16px;
+    }
+    
+}
+header, form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, form button{
+    padding: 0.1rem;
+    font-size: 1rem;
+    font-family: 'Indie Flower', cursive;
+    text-align: center;
+    border: 2px solid #89B270;
+    border-radius: 10px;
+    margin-right: 5px;
+    color: #37800d;
+}
+form input:hover{
+    border: 1px solid #58b323;
+}
+input{
+    min-width: 20%;
+    margin-top: -5px;
+    background: #E5F6E4;
+}
+form button{
+    border:none;
+    background: linear-gradient(120deg,#5CA006 0%,#9dff00 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.2rem;
+    font-size: 1.5rem;
+}
+
+.todo-ajout{
+    cursor: pointer;
+}
+
+.todo-ajout:hover{
+    border:none;
+    background: linear-gradient(120deg,#194102 0%,#63ff08 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+ 
+}
+// conteneur des tâches
+.todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list{
+    min-width: auto;
+    list-style: none;
+    margin-top: -30px; 
+}
+// tâches
+.todo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.3rem;
+    margin-right: -63px;
+    font-size: 1.2rem;
+    color: #5CA006;
+    li{
+        margin-right: 20px;
+        flex: 1;
+        background: #E5F6E4;
+        text-align: center;
+    }
+}
+.check-button, .delete-button, .edit-button{
+    border:none;
+    background: linear-gradient(120deg,#5CA006 0%,#9dff00 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.check-button:hover, .delete-button:hover, .edit-button:hover{
+    border:none;
+    background: linear-gradient(120deg,#194102 0%,#63ff08 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-trash-can, .fa-circle-check, .fa-ellipsis{
+    pointer-events: none;
+}
+.completed{
+    color: #37800d;
+    opacity: 0.5;
+
+}
