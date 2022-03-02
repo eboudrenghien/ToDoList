@@ -5,13 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/sass/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <title>TO-DO LIST</title>
 </head>
 <body>
@@ -19,8 +17,7 @@
     <aside><h2>Qu'est ce que c'est une TO-DO LIST?</h2>
         <p>Une to-do list permet de lister différentes tâches à accomplir. <br>
         Nous avons tous eu ce moment où nous aimerions faire tel chose, <br> mais au final, nous ne sommes pas motivée et nous repoussons la tâche à demain. <br>
-        Ce site va vous permettre de trouver la motivation afin d'accomplir vos tâches et à les finaliser.
-        <!--trouver une définition de to do list et un texte pour motiver la personne à utiliser le to-do list-->
+        Ce site va vous permettre de trouver la motivation afin d'accomplir vos tâches et à les finaliser. <br>
     </p></aside> 
     <form>
         <input type="text" class="todotext" required>
@@ -28,16 +25,15 @@
             <i class="fa-solid fa-circle-plus"></i>
         </button>
         <div class="filtre">
-            <select name="filtre" id="filtre-taches">
-                <option value="Terminé"></option>
-                <option value="En cours"></option>
-                <option value="Toutes"></option>
-            </select>
+            <select name="taches" id="filtre-todo">
+                <option value="toutes">Toutes</option>
+                <option value="termine">Terminé</option>
+                <option value="encours">En cours</option></select>
         </div>
     </form>
     <div class="todo-container">
         <ul class="todo-list"></ul>
-    </div>
+    </div> 
     <script src="./app.js"></script>
 </body>
 </html>
