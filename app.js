@@ -3,7 +3,9 @@ const todoText = document.querySelector(".todotext");
 const todoAjout = document.querySelector(".todo-ajout");
 const todoList = document.querySelector(".todo-list"); 
 const filtre = document.getElementById("filtre-todo")
+const editButton = document.createElement("button")
 
+editButton.addEventListener("click", editerTaches);
 document.addEventListener("DOMContentLoaded", getTaches)
 todoAjout.addEventListener("click", addTodo);
 todoList.addEventListener("click",supprimerCheck);
@@ -43,7 +45,7 @@ function addTodo(event) {
       //création du bouton input avec une image;
       // difficulté rencontré : relier l'image à input;
       // Solution trouver (voir essai.js)
-      const editButton = document.createElement("button");
+    
       editButton.innerHTML='<i class="fa-solid fa-ellipsis"></i>';
       editButton.classList.add("edit-button");
       todoDiv.appendChild(editButton);
@@ -64,6 +66,37 @@ function supprimerCheck(e){
   if(tache.classList[0] === "check-button"){
     const todo = tache.parentElement;    
     todo.classList.toggle("completed");
+  }
+}
+// Bouton éditer
+
+function editerTaches (e){
+  const tache = e.target;
+  if(tache.classList[0] === "edit-button"){
+    const todo = tache.parentElement 
+    const input = document.createElement("input")
+    const newTodo = document.createElement("li")
+    newTodo.innerText = todoText.value;
+    newTodo.appendChild(input);   //Création de la liste de tâche
+    todo.appendChild(newTodo)
+    // création input
+  
+    // création bouton sauvegarde + ajout événement
+    const sauvegarderButton = document.createElement("button")
+    sauvegarderButton.addEventListener("click", () => {
+      editButton.removeAttribute("readonly");
+      input.focus()
+      sauvegarderButton.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+    sauvegarderButton.classList.add("sauvegarder-button");
+    editButton.appendChild(sauvegarderButton)
+    });
+    //création bouton annuler + ajout événement
+    // const annulerButton = document.createElement("button")
+    // annulerButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+    // annulerButton.classList.add("annuler-button"),
+    // newTodo.appendChild(annulerButton);
+    // annulerButton.addEventListener("click", annulerTaches);
+
   }
 }
 
