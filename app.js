@@ -3,12 +3,9 @@ const todoText = document.querySelector(".todotext");
 const todoAjout = document.querySelector(".todo-ajout");
 const todoList = document.querySelector(".todo-list"); 
 const filtre = document.getElementById("filtre-todo")
-const editButton = document.createElement("button")
 
-editButton.addEventListener("click", editerTaches);
 document.addEventListener("DOMContentLoaded", getTaches)
 todoAjout.addEventListener("click", addTodo);
-todoList.addEventListener("click",supprimerCheck);
 filtre.addEventListener("input", filtreTodo);
 
 function addTodo(event) {
@@ -26,8 +23,9 @@ function addTodo(event) {
     newTodo.classList.add("todo-item");
     //permet de créer un enfant (newTodo, liste) à la div todoDiv
     todoDiv.appendChild(newTodo);
-    saveLocalTaches(todoText.value);
-    console.log("hi")
+    // saveLocalTaches(todoText.value);
+    todoList.appendChild(todoDiv);
+    todoText.value = ""; 
 
     // création du bouton check
     const checkButton = document.createElement("button");
@@ -41,55 +39,46 @@ function addTodo(event) {
     deleteButton.classList.add("delete-button");
     todoDiv.appendChild(deleteButton);
 
-      // création du bouton editer; 
-      //création du bouton input avec une image;
-      // difficulté rencontré : relier l'image à input;
-      // Solution trouver (voir essai.js)
-    
+    todoList.addEventListener("click",supprimerCheck);
+    function supprimerCheck(e){
+      const tache = e.target;   
+      if(tache.classList[0] === "delete-button"){
+        const todo = tache.parentElement;
+        removeLocaleTaches(todo);
+      todo.remove();
+      }
+      if(tache.classList[0] === "check-button"){
+        const todo = tache.parentElement;    
+        todo.classList.toggle("completed");
+      }
+    }
+
+    // création du bouton editer; 
+      const editButton = document.createElement("button")
       editButton.innerHTML='<i class="fa-solid fa-ellipsis"></i>';
       editButton.classList.add("edit-button");
       todoDiv.appendChild(editButton);
+      editButton.addEventListener("click", editerTaches);
 
+      
+    function editerTaches (e){
+      const tache = e.target;
+      if(tache.classList[0] === "edit-button"){
+      // const todo = tache.parentElement 
+      const input = document.createElement("input")
+      newTodo.innerText = input.value;
+      newTodo.appendChild(input);
+       //Création de la liste de tâche
     // ajouter notre tâche à la liste todo
-    todoList.appendChild(todoDiv);
-    todoText.value = ""; 
 }
 
-// Bouton supprimer
-function supprimerCheck(e){
-  const tache = e.target;   
-  if(tache.classList[0] === "delete-button"){
-    const todo = tache.parentElement;
-    removeLocaleTaches(todo);
-  todo.remove();
-  }
-  if(tache.classList[0] === "check-button"){
-    const todo = tache.parentElement;    
-    todo.classList.toggle("completed");
-  }
-}
-// Bouton éditer
-
-function editerTaches (e){
-  const tache = e.target;
-  if(tache.classList[0] === "edit-button"){
-    const todo = tache.parentElement 
-    const input = document.createElement("input")
-    const newTodo = document.createElement("li")
-    newTodo.innerText = todoText.value;
-    newTodo.appendChild(input);   //Création de la liste de tâche
-    todo.appendChild(newTodo)
-    // création input
-  
     // création bouton sauvegarde + ajout événement
-    const sauvegarderButton = document.createElement("button")
-    sauvegarderButton.addEventListener("click", () => {
-      editButton.removeAttribute("readonly");
-      input.focus()
-      sauvegarderButton.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
-    sauvegarderButton.classList.add("sauvegarder-button");
-    editButton.appendChild(sauvegarderButton)
-    });
+
+    // const sauvegarderButton = document.createElement("button")
+    // sauvegarderButton.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+    // sauvegarderButton.classList.add("sauvegarder-button");
+    // editButton.appendChild(sauvegarderButton)
+    // });
     //création bouton annuler + ajout événement
     // const annulerButton = document.createElement("button")
     // annulerButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
@@ -128,16 +117,16 @@ function filtreTodo(e){
 
 // Sauvegarde
 
-function saveLocalTaches(todo){
-  let taches;
-  if (localStorage.getItem("taches") === null){
-    taches = [];
-  } else{
-    taches = JSON.parse(localStorage.getItem("taches"))
-  }
-  taches.push(todo);
-  localStorage.setItem("taches", JSON.stringify(taches));
-}
+// function saveLocalTaches(todo){
+//   let taches;
+//   if (localStorage.getItem("taches") === null){
+//     taches = [];
+//   } else{
+//     taches = JSON.parse(localStorage.getItem("taches"))
+//   }
+//   taches.push(todo);
+//   localStorage.setItem("taches", JSON.stringify(taches));
+// }
 
 function getTaches(){
   let taches;
