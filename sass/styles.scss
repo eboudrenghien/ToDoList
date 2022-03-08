@@ -24,9 +24,6 @@ header{
 aside{
     margin-right: auto;
     margin-left: auto;
-    // border: 2px solid #5CA006;
-    // background-color: #ffec96;
-    // border-radius: 10px;
     width: 50%;
     h2{
         padding: 0.5rem;
@@ -98,7 +95,7 @@ form button{
 }
 
 .todo-list{
-    min-width: auto;
+    width: auto;
     list-style: none;
     margin-top: -30px; 
 }
