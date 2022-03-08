@@ -11,73 +11,71 @@ filtre.addEventListener("input", filtreTodo);
 function addTodo(event) {
     event.preventDefault();
     // création d'une div to do list
-    const todoDiv = document.createElement("div"); //permet de créer une div si on clique sur le bouton ajout
-    // création de la class div précédente (todo)
-    todoDiv.classList.add("todo");
-    // création d'une liste non ordonnée
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todoText.value;
-
   verification(document.formulaire.champ.value)
   function verification(champ) {
     if (champ =="") {
       alert ("Veuillez saisir une tâche, jeune padawan");
       return false;
     } else {
- 
-    // ajoute une class todo-item
-      newTodo.classList.add("todo-item");
-    //permet de créer un enfant (newTodo, liste) à la div todoDiv
-      todoDiv.appendChild(newTodo);
-    // saveLocalTaches(todoText.value);
-      todoList.appendChild(todoDiv);
-      todoText.value = "";
+        const todoDiv = document.createElement("div"); //permet de créer une div si on clique sur le bouton ajout
+        // création de la class div précédente (todo)
+        todoDiv.classList.add("todo");
+        // création d'une liste non ordonnée
+        const newTodo = document.createElement("li");
+        newTodo.innerText = todoText.value;
+        // ajoute une class todo-item
+        newTodo.classList.add("todo-item");
+        //permet de créer un enfant (newTodo, liste) à la div todoDiv
+        todoDiv.appendChild(newTodo);
+        // saveLocalTaches(todoText.value);
+        todoList.appendChild(todoDiv);
+        todoText.value = "";
 
 
   
-    // création du bouton check
-      const checkButton = document.createElement("button");
-      checkButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-      checkButton.classList.add("check-button");
-      todoDiv.appendChild(checkButton);
+        // création du bouton check
+        const checkButton = document.createElement("button");
+        checkButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        checkButton.classList.add("check-button");
+        todoDiv.appendChild(checkButton);
 
-      // création du bouton delete;
-      const deleteButton = document.createElement("button");
-      deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-      deleteButton.classList.add("delete-button");
-      todoDiv.appendChild(deleteButton);
+        // création du bouton delete;
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        deleteButton.classList.add("delete-button");
+        todoDiv.appendChild(deleteButton);
 
-      todoList.addEventListener("click",supprimerCheck);
-      function supprimerCheck(e){
-        const tache = e.target;   
-        if (tache.classList[0] === "delete-button") {
-          const todo = tache.parentElement;
-          removeLocaleTaches(todo);
-          todo.remove();
+        todoList.addEventListener("click",supprimerCheck);
+        function supprimerCheck(e){
+          const tache = e.target;   
+          if (tache.classList[0] === "delete-button") {
+            const todo = tache.parentElement;
+            removeLocaleTaches(todo);
+            todo.remove();
+          }
+          if (tache.classList[0] === "check-button") {
+            const todo = tache.parentElement;    
+            todo.classList.toggle("completed");
+          }
         }
-        if (tache.classList[0] === "check-button") {
-          const todo = tache.parentElement;    
-          todo.classList.toggle("completed");
+        
+        // création du bouton editer; 
+        const editButton = document.createElement("button")
+        editButton.innerHTML='<i class="fa-solid fa-ellipsis"></i>';
+        editButton.classList.add("edit-button");
+        todoDiv.appendChild(editButton);
+        editButton.addEventListener("click", editerTaches);
+
+        function editerTaches(e) {
+          const tache = e.target;
+          if (tache.classList[0] === "edit-button") {
+          // const todo = tache.parentElement 
+            const input = document.createElement("input")
+            newTodo.innerText = input.value;
+            newTodo.appendChild(input);
+          }
         }
       }
-
-      // création du bouton editer; 
-      const editButton = document.createElement("button")
-      editButton.innerHTML='<i class="fa-solid fa-ellipsis"></i>';
-      editButton.classList.add("edit-button");
-      todoDiv.appendChild(editButton);
-      editButton.addEventListener("click", editerTaches);
-
-      function editerTaches(e) {
-        const tache = e.target;
-        if (tache.classList[0] === "edit-button") {
-        // const todo = tache.parentElement 
-          const input = document.createElement("input")
-          newTodo.innerText = input.value;
-          newTodo.appendChild(input);
-        }
-      }
-    }
   } 
 }
 // Filtre
