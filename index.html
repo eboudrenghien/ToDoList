@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Une super to-do list développée par Esther BOUDRENGHIEN dans le cadre de l'Access Code School de Dijon, encadré par Edouard LEBOURGEOIS, super formateur JavaScript."
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/sass/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
@@ -19,9 +20,9 @@
         Nous avons tous eu ce moment où nous aimerions faire tel chose, <br> mais au final, nous ne sommes pas motivée et nous repoussons la tâche à demain. <br>
         Ce site va vous permettre de trouver la motivation afin d'accomplir vos tâches et à les finaliser. <br>
     </p></aside> 
-    <form>
-        <input type="text" class="todotext" required>
-        <button class="todo-ajout" type="submit">
+    <form name="formulaire" onsubmit="return" validation>
+        <input type="text" class="todotext" value="" name="champ" autocomplete=off >
+        <button class="todo-ajout" type="submit" name="submit" value="valider">
             <i class="fa-solid fa-circle-plus"></i>
         </button>
         <div class="filtre">
